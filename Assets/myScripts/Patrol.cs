@@ -39,6 +39,8 @@ public class Patrol : MonoBehaviour
         {
             Patrolling();
         }
+
+        Debug.Log(currentPoint);
     }
 
     //Returns the agent's speed to it's default speed and resumes patrolling.
@@ -57,7 +59,7 @@ public class Patrol : MonoBehaviour
         agent.SetDestination(patrolPoints[currentPoint].position);
 
             yield return new WaitUntil(() => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance);
-            yield return new WaitForSeconds(0.5f); // Wait for 1 second before moving to the next point
+            yield return new WaitForSeconds(0.5f); // Wait for 0.5 second before moving to the next point
             currentPoint = (currentPoint + 1) % patrolPoints.Count;
 
         }
